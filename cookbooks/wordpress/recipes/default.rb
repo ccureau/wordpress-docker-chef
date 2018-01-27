@@ -7,7 +7,7 @@
 # Install dependent packages
 %w{ httpd php php-common php-mysql php-gd php-xml php-mbstring php-mcrypt php-xmlrpc }.each do |pkg|
   package pkg do
-    action :install 
+    action :install
   end
 end
 
@@ -23,4 +23,11 @@ bash 'set up wordpress directory' do
     rm -rf wordpress /tmp/wordpress.tar.gz
     chown -R #{node['wordpress']['apache_user']}:#{node['wordpress']['apache_group']} #{node['wordpress']['apache_dir']}
   EOH
+end
+
+template "#{node['wordpress']['apache_dir']}/wp-config.php" do
+  source 'wp-config.php.erb'
+  owner node['wordpress']['apache_user']
+  group node['wordpress']['apache_group']
+  mode 0600
 end

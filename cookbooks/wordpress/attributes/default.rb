@@ -1,3 +1,5 @@
+default['wordpress']['db_name'] = ENV['WORDPRESS_DB_NAME'] || 'wordpress'
+default['wordpress']['db_name'] = ENV['WORDPRESS_DB_HOST'] || 'wordpress-mariadb'
 default['wordpress']['db_user'] = ENV['WORDPRESS_DB_USER'] || 'mariadb'
 default['wordpress']['db_pass'] = ENV['WORDPRESS_DB_PASS']
 default['wordpress']['download_url'] = 'http://wordpress.org/latest.tar.gz'
