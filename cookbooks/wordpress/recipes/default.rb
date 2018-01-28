@@ -31,3 +31,5 @@ template "#{node['wordpress']['apache_dir']}/wp-config.php" do
   group node['wordpress']['apache_group']
   mode 0600
 end
+
+include_recipe 'wordpress::_config_supervisord'
